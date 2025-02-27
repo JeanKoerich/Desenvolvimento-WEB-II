@@ -1,6 +1,6 @@
 {
     "require": {
-        "mpdf/mpdf": "*",
+        "mpdf/mpdf": "^8.2",
         "monolog/monolog": "^2.10"
     }
 }
