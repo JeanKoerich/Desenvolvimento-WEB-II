@@ -9,10 +9,10 @@
     <h2>Dados Recebidos</h2>
 
     <?php
-    $nome     = trim($_REQUEST['nome'] ?? 'Não informado');
-    $telefone = trim($_REQUEST['telefone'] ?? 'Não informado');
-    $email    = trim($_REQUEST['email'] ?? 'Não informado');
-    $mensagem = trim($_REQUEST['mensagem'] ?? 'Não informado');
+    $nome     = $_REQUEST['nome'];
+    $telefone = $_REQUEST['telefone'];
+    $email    = $_REQUEST['email'];
+    $mensagem = $_REQUEST['mensagem'];
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $email = "E-mail inválido";
