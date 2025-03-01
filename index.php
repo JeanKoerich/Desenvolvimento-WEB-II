@@ -21,7 +21,7 @@
         <br>
 
         <label for="mensagem">Mensagem:</label>
-        <textarea id="mensagem" name="mensagem" rows="4"></textarea>
+        <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
         <br>
 
         <button type="submit">Enviar</button>

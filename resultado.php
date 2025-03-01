@@ -9,6 +9,7 @@
     <h2>Dados Recebidos</h2>
 
     <?php
+
     $nome     = $_REQUEST['nome'];
     $telefone = $_REQUEST['telefone'];
     $email    = $_REQUEST['email'];
@@ -18,25 +19,33 @@
         $email = "E-mail inválido";
     }
 
-    echo "<p><strong>Nome:</strong> " . htmlspecialchars($nome) . "</p>";
-    echo "<p><strong>Telefone:</strong> " . htmlspecialchars($telefone) . "</p>";
-    echo "<p><strong>Email:</strong> " . htmlspecialchars($email) . "</p>";
-    echo "<p><strong>Mensagem:</strong> " . nl2br(htmlspecialchars($mensagem)) . "</p>";
+    $data = "";
+    $data .= "<p><strong>Nome:</strong> " . htmlspecialchars($nome) . "</p>";
+    $data .= "<p><strong>Telefone:</strong> " . htmlspecialchars($telefone) . "</p>";
+    $data .= "<p><strong>Email:</strong> " . htmlspecialchars($email) . "</p>";
+    $data .= "<p><strong>Mensagem:</strong> " . nl2br(htmlspecialchars($mensagem)) . "</p>";
 
-    echo "<h2>Método HTTP Utilizado</h2>";
-    echo "<p><strong>Método:</strong> " . $_SERVER['REQUEST_METHOD'] . "</p>";
+    $data .= "<h2>Método HTTP Utilizado</h2>";
+    $data .= "<p><strong>Método:</strong> " . $_SERVER['REQUEST_METHOD'] . "</p>";
 
-    echo "<h2>Cabeçalhos da Requisição</h2>";
-    $cabecalhos = function_exists('getallheaders') ? getallheaders() : (function_exists('apache_request_headers') ? apache_request_headers() : []);
+    $data .= "<h2>Cabeçalhos da Requisição</h2>";
+    $cabecalhos = function_exists('getallheaders') ? getallheaders() : 
+    (function_exists('apache_request_headers') ? apache_request_headers() : []);
     
     if (!empty($cabecalhos)) {
         foreach ($cabecalhos as $header => $value) {
-            echo "<p><strong>" . htmlspecialchars($header) . ":</strong> " . htmlspecialchars($value) . "</p>";
+            $data .= "<p><strong>" . htmlspecialchars($header) . ":</strong> " . 
+            htmlspecialchars($value) . "</p>";
         }
     } else {
-        echo "<p>Nenhum cabeçalho disponível.</p>";
+        $data .= "<p>Nenhum cabeçalho disponível.</p>";
     }
-    ?>
 
+    require_once __DIR__ . '/vendor/autoload.php';
+    $mpdf = new \Mpdf\Mpdf();
+    $mpdf -> WriteHTML($data);
+    $mpdf -> Output("resultado.pdf" , "I");
+    ?>
+    
 </body>
 </html>
