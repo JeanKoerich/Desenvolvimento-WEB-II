@@ -41,7 +41,7 @@
         $data .= "<p>Nenhum cabeçalho disponível.</p>";
     }
 
-    require_once __DIR__ . '/vendor/autoload.php';
+    require_once __DIR__ . '/../vendor/autoload.php';
     $mpdf = new \Mpdf\Mpdf();
     $mpdf -> WriteHTML($data);
     $mpdf -> Output("resultado.pdf" , "I");
