@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContatoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,9 @@ Route::get('/', function () {
 });
 
 Route::get('/contato', function(){
-    return view('Contato');
+    return view('contato');
 });
+
+Route::resource('/contato', ContatoController::class);
 
 ?>

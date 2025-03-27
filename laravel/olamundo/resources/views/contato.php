@@ -6,7 +6,7 @@
     <title>aula 4</title>
 </head>
 <body>
-    <H1>Minha página de contato</H1>
+    <H1> <?php echo $titulo?> </H1>
     <a href="jean.koerich@unidavi.edu.br">
         Enviar e-mail
     </a>

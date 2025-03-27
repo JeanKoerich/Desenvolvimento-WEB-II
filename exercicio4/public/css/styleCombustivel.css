@@ -1,0 +1,13 @@
+h2 {
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
+
+form {
+    max-width: 500px;
+}
+
+select,
+input[type="number"] {
+    width: 100%;
+}
