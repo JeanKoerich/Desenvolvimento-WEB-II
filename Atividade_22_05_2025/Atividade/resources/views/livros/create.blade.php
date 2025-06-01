@@ -23,27 +23,34 @@
 
                     <div class="mb-4">
                         <label class="block text-gray-700 font-medium mb-2">Título</label>
-                        <input type="text" name="titulo" class="w-full border-gray-300 rounded-lg px-4 py-2 shadow-sm focus:ring focus:ring-indigo-200" required>
+                        <input type="text" name="titulo"
+                            class="w-full border-gray-300 rounded-lg px-4 py-2 shadow-sm focus:ring focus:ring-indigo-200"
+                            required>
                     </div>
 
                     <div class="mb-4">
                         <label class="block text-gray-700 font-medium mb-2">Autor</label>
-                        <input type="text" name="autor" class="w-full border-gray-300 rounded-lg px-4 py-2 shadow-sm focus:ring focus:ring-indigo-200" required>
+                        <input type="text" name="autor"
+                            class="w-full border-gray-300 rounded-lg px-4 py-2 shadow-sm focus:ring focus:ring-indigo-200"
+                            required>
                     </div>
 
                     <div class="mb-6">
                         <label class="block text-gray-700 font-medium mb-2">Cliente (opcional)</label>
                         <select name="cliente_id" class="w-full border-gray-300 rounded-lg px-4 py-2 shadow-sm">
                             <option value="">-- Selecione um cliente --</option>
-                            @foreach($clientes as $cliente)
+                            @foreach ($clientes as $cliente)
                                 <option value="{{ $cliente->id }}">{{ $cliente->nome }}</option>
                             @endforeach
                         </select>
                     </div>
 
                     <div class="flex justify-end gap-4">
-                        <a href="{{ route('livros.index') }}" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium px-4 py-2 rounded-lg shadow">Cancelar</a>
-                        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-medium px-4 py-2 rounded-lg shadow">Salvar</button>
+                        <a href="{{ route('livros.index') }}"
+                            class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium px-4 py-2 rounded-lg shadow">Cancelar</a>
+                        <button href="{{ route('livros.index') }}"
+                            type="submit"
+                            class="bg-green-600 hover:bg-green-700 text-white font-medium px-4 py-2 rounded-lg shadow">Salvar</button>
                     </div>
                 </form>
             </div>

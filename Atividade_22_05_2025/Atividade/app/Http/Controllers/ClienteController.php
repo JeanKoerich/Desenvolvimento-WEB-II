@@ -15,7 +15,7 @@ class ClienteController extends Controller
     public function index()
     {
         $clientes = Cliente::with('livros')
-        ->paginate(6);
+            ->paginate(6);
 
         $busca = null;
 
@@ -36,27 +36,21 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        // Validação dos dados
+        // Validação apenas para nome e idade
         $request->validate([
             'nome' => 'required|string|max:255',
-            'idade' => 'required|numeric|max:150',
-            'livro' => 'required|string|max:200',
+            'idade' => 'required|numeric|min:0',
         ]);
 
-        // Criando novo cliente com new e atribuindo propriedades
+        // Criar cliente apenas com nome e idade
         $cliente = Cliente::create([
             'nome' => $request->nome,
             'idade' => $request->idade,
         ]);
 
-        $livro = new Livro([
-            'titulo' => $request->livro,
-        ]);
-
-        $cliente->livros()->save($livro);
-
         return redirect()->route('clientes.index')->with('success', 'Cliente criado com sucesso!');
     }
+
 
 
 
@@ -86,7 +80,8 @@ class ClienteController extends Controller
     {
         $request->validate([
             'nome' => 'required|string|max:255',
-            'idade' => 'required|integer|min:150',
+            'idade' => 'required|integer|min:0',
+            'livro' => 'nullable|string|max:200',
         ]);
 
         $cliente->update([
