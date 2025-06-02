@@ -36,13 +36,11 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        // Validação apenas para nome e idade
         $request->validate([
             'nome' => 'required|string|max:255',
             'idade' => 'required|numeric|min:0',
         ]);
 
-        // Criar cliente apenas com nome e idade
         $cliente = Cliente::create([
             'nome' => $request->nome,
             'idade' => $request->idade,
@@ -81,7 +79,6 @@ class ClienteController extends Controller
         $request->validate([
             'nome' => 'required|string|max:255',
             'idade' => 'required|integer|min:0',
-            'livro' => 'nullable|string|max:200',
         ]);
 
         $cliente->update([

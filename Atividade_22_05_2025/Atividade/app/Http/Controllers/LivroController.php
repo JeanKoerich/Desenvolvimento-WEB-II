@@ -45,7 +45,6 @@ class LivroController extends Controller
 
     $data = $request->all();
 
-    // Ajustar cliente_id para null caso seja string vazia
     if (empty($data['cliente_id'])) {
         $data['cliente_id'] = null;
     }
@@ -79,14 +78,12 @@ class LivroController extends Controller
      */
     public function update(Request $request, Livro $livro)
     {
-        // Validação dos dados
         $request->validate([
             'titulo' => 'required|string|max:255',
             'autor' => 'required|string|max:255',
             'cliente_id' => 'nullable|exists:clientes,id',
         ]);
 
-        // Atualizar livro
         $livro->update([
             'titulo' => $request->titulo,
             'autor' => $request->autor,
